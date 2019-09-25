@@ -2,9 +2,9 @@
 
 [Home Assistant] supports various installation methods. [EVOK] requires [raspbian](https://www.raspberrypi.org/downloads/raspbian/).
 
-## 1. Create SD-Card Install Raspbian without Desktop
+## 1. Create SD-Card with Raspbian Lite
 
-The Raspbian Lite installation is sufficient.
+The Raspbian Lite (without desktop) installation is sufficient.
 
 Download [Raspbian Buster Lite](https://downloads.raspberrypi.org/raspbian_lite_latest) and 
 [write it to an SD-Card](https://www.raspberrypi.org/documentation/installation/installing-images/README.md).
@@ -113,8 +113,61 @@ sudo reboot
 
 ## 4. Check EVOK Installation
 
-Open the following http://192.168.X.Y in your browser.
+Open http://192.168.X.Y in your browser.
 You can check input states and toggle outputs.
+
+## 5. Install Home Assistant
+
+Follow [Home Assistant Installation Instructions](https://www.home-assistant.io/docs/installation/raspberry-pi/) 
+ (just copy-paste these lines to the UniPi console):
+
+```bash
+sudo apt-get install python3 python3-dev python3-venv python3-pip libffi-dev libssl-dev -y
+sudo useradd -rm homeassistant -G dialout,gpio,i2c
+cd /srv
+sudo sudo mkdir homeassistant
+sudo sudo chown homeassistant:homeassistant homeassistant
+sudo -u homeassistant -H -s
+cd /srv/homeassistant
+python3 -m venv .
+source bin/activate
+python3 -m pip install wheel
+pip3 install homeassistant
+hass  # takes up to 10 minutes
+
+# Press <CTRL>-D
+exit
+```
+
+Now register [Home Assistant as systemd service](https://www.home-assistant.io/docs/autostart/systemd/)
+
+```bash
+sudo -i
+cat > /etc/systemd/system/home-assistant.service << EOL
+[Unit]
+Description=Home Assistant
+After=network-online.target
+
+[Service]
+Type=simple
+User=homeassistant
+ExecStart=/srv/homeassistant/bin/hass -c "/home/homeassistant/.homeassistant"
+
+[Install]
+WantedBy=multi-user.target
+EOL
+exit
+sudo systemctl --system daemon-reload
+sudo systemctl enable home-assistant
+sudo systemctl start home-assistant
+```
+
+Open http://192.168.X.Y:8123 in your browser.
+Proceed with the Home Assistant Introduction Dialog
+
+## 6. Install UniPi Integration
+
+TBD
 
 -----
 
