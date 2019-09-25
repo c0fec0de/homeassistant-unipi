@@ -1,23 +1,23 @@
 # Home Assistant on UniPi
 
-Integration of the [UniPi](https://www.unipi.technology/) Hardware into [Home Assistant](https://www.home-assistant.io/)
+Integration of the [UniPi] Hardware into [Home Assistant]
 
 ## Introduction
 
-[UniPi](https://www.unipi.technology/) builds [Raspberry Pi](https://www.raspberrypi.org/) based DIN rail universal programmable logic controllers (PLC) with analog/digital inputs and outputs.
+[UniPi] builds [Raspberry Pi](https://www.raspberrypi.org/) based DIN rail universal programmable logic controllers (PLC) with analog/digital inputs and outputs.
 This Home Assistant integration bases on [EVOK - the UniPi API](https://github.com/UniPiTechnology/evok). 
 
-[Home Assistant](https://www.home-assistant.io/) is generic smart home hub, linking
+[Home Assistant] is generic smart home hub, linking
 all kinds of smart home technologies. 
-[Amazon Alexa](https://www.home-assistant.io/components/alexa/), [Google Assistant](https://www.home-assistant.io/components/google_assistant/), [Philips Hue](https://www.home-assistant.io/components/hue/), [UniPi](https://www.unipi.technology/)and many more can interact with each other.
+[Amazon Alexa](https://www.home-assistant.io/components/alexa/), [Google Assistant](https://www.home-assistant.io/components/google_assistant/), [Philips Hue](https://www.home-assistant.io/components/hue/), [UniPi]and many more can interact with each other.
 
 #### Supported Home Assistant Features:
 
 * **UniPi Hub** The bridge between Home Assistant and UniPi
 * **Binary Sensor**: Any digital input can be evaluated as [Home Assistant Binary Sensor](https://www.home-assistant.io/components/binary_sensor/) signaling buttons, switches, motion or any other event.
-* **Switch**: Any digital output can be handled as [Switch](https://www.home-assistant.io/components/switch/)
-* **Light**: Any digital output can be handled as [Light](https://www.home-assistant.io/components/light/)
-* **Cover**: Two digital outputs can control a [Cover](https://www.home-assistant.io/components/cover/) (up/down motors).
+* **Switch**: Any digital output can be handled as [Home Assistant Switch](https://www.home-assistant.io/components/switch/)
+* **Light**: Any digital output can be handled as [Home Assistant Light](https://www.home-assistant.io/components/light/)
+* **Cover**: Two digital outputs can control a [Home Assistant Cover](https://www.home-assistant.io/components/cover/) (up/down motors).
 
 ## Hardware
 
@@ -28,3 +28,8 @@ all kinds of smart home technologies.
 ## Installation
 
 Please see [Installation](Installation.md)
+
+-----
+
+[UniPi]:https://www.unipi.technology/
+[Home Assistant]:https://www.home-assistant.io/
